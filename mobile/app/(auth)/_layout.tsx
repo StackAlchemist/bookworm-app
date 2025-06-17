@@ -1,9 +1,8 @@
+import { Stack } from 'expo-router'
 import { View, Text } from 'react-native'
 const AuthLayout = () => {
   return (
-    <View>
-      <Text>_layout</Text>
-    </View>
-  )
+    <Stack screenOptions={{ headerShown: false}}/>
+  );
 }
 export default AuthLayout

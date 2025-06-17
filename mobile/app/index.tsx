@@ -8,8 +8,8 @@ export default function Index() {
       style={styles.container}
     >
       <Text style={styles.title}>Hello</Text>
-      <Link href="/signup">Sign Up</Link>
-      <Link href="/login">Log in</Link>
+      <Link href="/(auth)/signup">Sign Up</Link>
+      <Link href="/(auth)">Log in</Link>
     </View>
   );
 }
