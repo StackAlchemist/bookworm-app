@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, Platform } from 'react-native'
 import styles from '@/assets/styles/login.styles'
 import { useState } from 'react'
 import { Image } from 'expo-image'
@@ -17,6 +17,10 @@ const Index = () => {
     }
 
   return (
+    <KeyboardAvoidingView  style={{flex: 1}}
+    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+
     <View style={styles.container}>
 
         {/* illsutration */}
@@ -24,7 +28,7 @@ const Index = () => {
             <Image 
                 source={require("@/assets/images/login_illustration.svg")}
                 style={styles.illustrationImage}
-                resizeMode='contain'
+                contentFit='contain'
             />
         </View>
       {/* <Text>Login screen</Text> */}
@@ -32,7 +36,8 @@ const Index = () => {
       <View style={styles.card}>
         <View style={styles.formContainer}>
             
-            <View style={styles.inputGroup}></View>
+            <View style={styles.inputGroup}>
+
             <Text style={styles.label}>Email</Text>
             <View style={styles.inputContainer}>
                 <Ionicons 
@@ -40,7 +45,7 @@ const Index = () => {
                     size={20}
                     color={COLORS.primary}
                     style={styles.inputIcon}
-                />
+                    />
                 <TextInput 
                     style={styles.input}
                     placeholder='Enter your email'
@@ -49,10 +54,12 @@ const Index = () => {
                     onChangeText={setEmail}
                     keyboardType="email-address"
                     autoCapitalize='none'
-                />
+                    />
             </View>
+                    </View>
 
-            <View style={styles.inputGroup}></View>
+            <View style={styles.inputGroup}>
+
             <Text style={styles.label}>Password</Text>
             <View style={styles.inputContainer}>
                 <Ionicons 
@@ -69,7 +76,7 @@ const Index = () => {
                     onChangeText={setPassword}
                     keyboardType="default"
                     autoCapitalize='none'
-                    onChangeText={setPassword}
+                    // onChangeText={setPassword}
                     secureTextEntry={!showPassword}
                 />
 
@@ -80,9 +87,10 @@ const Index = () => {
                         name={showPassword ? "eye-outline": "eye-off-outline"}
                         size={20}
                         color={COLORS.primary}
-                    />
+                        />
                 </TouchableOpacity>
             </View>
+                        </View>
 
 
             <TouchableOpacity style={styles.button} onPress={handleLogin}
@@ -112,6 +120,7 @@ const Index = () => {
         </View>
       </View>
     </View>
+    </KeyboardAvoidingView>
   )
 }
 export default Index
